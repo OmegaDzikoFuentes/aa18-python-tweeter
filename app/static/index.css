@@ -43,3 +43,11 @@ p:nth-child(2) {
     font-size: 18px;
     font-weight: bold;
 }
+
+.tweet .likes {
+    color: whitesmoke; /* Default color */
+}
+
+.tweet .likes.orange {
+    color: orange; /* Color for tweets with > 525k likes */
+}

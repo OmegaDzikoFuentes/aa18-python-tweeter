@@ -1,11 +1,15 @@
+{% extends 'base.html' %}
 
+{% block main %}
 <div class="feed_container">
-   
-    <div class="tweet">
-   
-    </div> 
-      
+    {% for tweet in tweets %}
+     <div class="tweet">
+        <p>{{ tweet.author }} tweeted on {{ tweet.date }} ...</p>
+        <p>"{{ tweet.tweet }}"</p>
+        <p class="likes {% if tweet.likes > 525000 %}orange{% endif %}">
+            Likes: {{ tweet.likes / 1000 }}k
+        </p>
+     </div>
+
 </div>
-
-
-
+{% endblock %}
