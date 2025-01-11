@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+
+{% block main %}
+    <h1>Create A New Tweet</h1>
+    <form method="POST" class="tweet">
+        {{ form.hidden_tag() }}  <!-- CSRF Protection -->
+        <div>
+            {{ form.author.label }}<br>
+            {{ form.author(size=30) }}<br>
+            {% for error in form.author.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.tweet.label }}<br>
+            {{ form.tweet(size=30) }}<br>
+            {% for error in form.tweet.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from .config import Config
 from random import choice
 from .tweets import tweets
+from app.form.form import TweetForm
 
 
 
@@ -16,3 +17,12 @@ def index():
 @app.route("/feed")
 def feed():
     return render_template("feed.html", tweets=tweets)
+
+@app.route("/new", methods=["GET", "POST"])
+def new():
+    form = TweetForm()
+    if form.validate_on_submit():
+        author = form.author.data
+        tweet = form.tweet.data
+        return redirect(url_for("home"))
+    return render_template("new_tweet.html", form=form)
